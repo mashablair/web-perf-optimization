@@ -22,7 +22,7 @@ module.exports = function(grunt) {
       dev: {
         files: [{
           expand: true,                  // Enable dynamic expansion
-          cwd: 'images_src/',
+          cwd: 'views/images/',           //Removed 'images_src' to minify images in Cam's pizza
           src: ['**/*.{png,jpg,gif}'],   // Actual patterns to match
           dest: 'dist/images/'                  // Destination path prefix
         }]
