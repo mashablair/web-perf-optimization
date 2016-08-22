@@ -1,0 +1,26 @@
+{
+  "name": "web-performance-optimization",
+  "version": "1.2.0",
+  "description": "Udacity project of optimizing the performance of the website",
+  "main": "perfmatters.js",
+  "dependencies": {
+    "grunt": "^1.0.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mashablair/web-perf-optimization.git"
+  },
+  "keywords": [
+    "perfmatters"
+  ],
+  "author": "Maria Blair",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mashablair/web-perf-optimization/issues"
+  },
+  "homepage": "https://github.com/mashablair/web-perf-optimization#readme"
+}
