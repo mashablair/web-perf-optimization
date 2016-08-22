@@ -18,9 +18,20 @@ module.exports = function(grunt) {
         }]
       }
     },
+    imagemin: {
+      dev: {
+        files: [{
+          expand: true,                  // Enable dynamic expansion
+          cwd: 'images_src/',
+          src: ['**/*.{png,jpg,gif}'],   // Actual patterns to match
+          dest: 'dist/images/'                  // Destination path prefix
+        }]
+      }
+    }
   });
 
   grunt.loadNpmTasks('grunt-responsive-images');
-  grunt.registerTask('default', 'responsive_images');
+  grunt.loadNpmTasks('grunt-contrib-imagemin');
+  grunt.registerTask('default', 'responsive_images', ['imagemin']);
 
 };
