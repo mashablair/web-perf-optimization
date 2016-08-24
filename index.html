@@ -7,7 +7,7 @@
     <meta name="author" content="Maria Blair">
     <title>Optimized Portfolio</title>
 
-    <!-- Hmm, what is the impact of web fonts on speed? Measure it... -->
+    <!-- I removed this link because I inlined its content below in <style>  -->
     <!-- <link href="//fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet"> -->
     <style type="text/css">
             /* latin-ext */
@@ -26,7 +26,7 @@
         src: local('Open Sans'), local('OpenSans'), url(https://fonts.gstatic.com/s/opensans/v13/cJZKeOuBrn4kERxqtaUH3ZBw1xU1rKptJj_0jans920.woff2) format('woff2');
         unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
       }
-
+/*    Here I inlined all my style.css file: */
       html {
         font-size: 100%;
         overflow-y: scroll;
@@ -79,9 +79,11 @@
 
     </style>
 
+<!-- I removed this link because all css is inlined above -->
     <!-- <link href="css/style.css" rel="stylesheet"> -->
     <link href="css/print.css" rel="stylesheet" media="print">
     <script src="http://www.google-analytics.com/analytics.js" async></script>
+    <!--Here I created a minified version of perfmatters.js using Grunt and removed it:-->
     <!-- <script async src="js/perfmatters.js"></script> -->
     <script async src="dist/js/perfmatters.min.js"></script>
   </head>
