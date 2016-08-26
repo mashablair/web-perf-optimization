@@ -525,6 +525,11 @@ window.addEventListener('scroll', updatePositions);
 document.addEventListener('DOMContentLoaded', function() {
   var cols = 8;
   var s = 256;
+  //Created this var before the loop to get rid of the querySelector in the loop:
+  var movingPizzas = document.getElementById('movingPizzas1');
+  // Per Karol's suggestion, to calculate # of pizza's per viewer's viewport:
+  var intViewportWidth = window.innerWidth;
+
   for (var i = 0; i < 12; i++) {
     var elem = document.createElement('img');
     elem.className = 'mover';
@@ -533,7 +538,10 @@ document.addEventListener('DOMContentLoaded', function() {
     elem.style.width = "73.333px";
     elem.basicLeft = (i % cols) * s;
     elem.style.top = (Math.floor(i / cols) * s) + 'px';
-    document.querySelector("#movingPizzas1").appendChild(elem);
+    // The var movingPizzas before the loop improves this line be removing the query:
+    // document.querySelector("#movingPizzas1").appendChild(elem);
+    // The append is now updated without a query:
+    movingPizzas.appendChild(elem);
   }
   updatePositions();
 });
