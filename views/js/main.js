@@ -406,13 +406,13 @@ var resizePizzas = function(size) {
   function changeSliderLabel(size) {
     switch(size) {
       case "1":
-        document.querySelector("#pizzaSize").innerHTML = "Small";
+        document.getElementById("pizzaSize").innerHTML = "Small"; //'querySelector' is replaced w/ 'getElementByID'
         return;
       case "2":
-        document.querySelector("#pizzaSize").innerHTML = "Medium";
+        document.getElementById("pizzaSize").innerHTML = "Medium"; //'querySelector' is replaced w/ 'getElementByID'
         return;
       case "3":
-        document.querySelector("#pizzaSize").innerHTML = "Large";
+        document.getElementById("pizzaSize").innerHTML = "Large"; //'querySelector' is replaced w/ 'getElementByID'
         return;
       default:
         console.log("bug in changeSliderLabel");
@@ -421,7 +421,7 @@ var resizePizzas = function(size) {
 
   changeSliderLabel(size);
 
-   // This code is from Cameron's lecture and changes the pizzas value to a % width
+   // This code is from Cameron's lecture: it changes the pizzas value to a % width
   function changePizzaSizes (size) {
     switch(size) {
       case "1":
@@ -441,7 +441,9 @@ var resizePizzas = function(size) {
     // And also querySelectorAll is replaced by the getElementsByClassName to avoid scanning the whole DOM
     var randomPizzas = document.getElementsByClassName("randomPizzaContainer");
 
-    for (var i = 0; i < randomPizzas.length; i++) {
+    //Per reviewer's suggestion, it's more efficient to create var for array length, so that
+    //array's length property is not accessed to check its value at each iteration
+    for (var i = 0, len = randomPizzas.length; i < len; i++) {
       randomPizzas[i].style.width = newWidth + "%";
     }
   }
@@ -458,8 +460,10 @@ var resizePizzas = function(size) {
 window.performance.mark("mark_start_generating"); // collect timing data
 
 // This for-loop actually creates and appends all of the pizzas when the page loads
+// Per reviewer's suggestion, took out the var 'pizzaDiv' from inside the loop, and
+// put it outside the loop so that it's not calling the DOM every loop iteration:
+var pizzasDiv = document.getElementById("randomPizzas");
 for (var i = 2; i < 100; i++) {
-  var pizzasDiv = document.getElementById("randomPizzas");
   pizzasDiv.appendChild(pizzaElementGenerator(i));
 }
 
@@ -500,7 +504,10 @@ function updatePositions() {
   //This var calculates the scrollTop before the loop so that there is no query to the DOM each time the loop runs:
   var scrollPosition = document.body.scrollTop / 1250;
 
-  for (var i = 0; i < items.length; i++) {
+  // Per reviewer's suggestion, create var 'len' inside the loop initialization,
+  // as well as the var 'phase' -- mentioned it in the initialization of the loop
+  // to add efficiency:
+  for (var i = 0, len = items.length, phase; i < len; i++) {
     //This line was causing 'forced reflow' bottleneck:
     // var phase = Math.sin((document.body.scrollTop / 1250) + (i % 5));
     //Replaced with this line with var scrollPosition that is now not part of this loop:
@@ -530,7 +537,9 @@ document.addEventListener('DOMContentLoaded', function() {
   // Per Karol's suggestion, to calculate # of pizza's per viewer's viewport:
   var intViewportWidth = window.innerWidth;
 
-  for (var i = 0; i < 12; i++) {
+  // Per reviewer's suggestion, changed the number of sliding pizzas from 12 to 24;
+  // Also placed the var 'elem' in the loop initialization for efficiency
+  for (var i = 0, elem; i < 24; i++) {
     var elem = document.createElement('img');
     elem.className = 'mover';
     elem.src = "images/pizza.png";

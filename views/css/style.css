@@ -30,6 +30,10 @@ form {
 }
 
 .mover {
+  /* Per reviewer's suggestion, added transform: translate to create
+  hardware accelerated CSS.  This is how the GPU can be triggered.  */
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
   position: fixed;
   width: 256px;
   z-index: -1;
